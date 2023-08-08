@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  php-apache:
+    container_name: apache-php
+    build:
+      context: ./
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - 8000:80
+  db:
+    container_name: database
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: root
+    ports:
+      - "9906:3306"
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: myadmin-php
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+    restart: always
+    ports:
+      - 8081:80
