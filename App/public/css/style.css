@@ -1,3 +1,31 @@
 body {
-  background-color: violet;
+  background-color: #E8E1E1;
+}
+
+.image {
+  text-align: center;
+  top: 20vh;
+  position: relative;
+}
+
+.image img {
+  width: 30%;
+  height: 50%;
+}
+
+@media (max-width: 768px) {
+  .image img {
+    width: 60%;
+  }
+}
+
+h2 {
+  opacity: 0;
+  animation: fadeInAnimation 3s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+  to {
+    opacity: 1;
+  }
 }
